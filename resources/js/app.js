@@ -31,3 +31,79 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app'
 });
+
+import $ from 'jquery';
+import 'jquery-ui/ui/widgets/autocomplete.js';
+import 'jquery-ui/ui/widgets/tooltip.js';
+import 'jquery-ui/ui/widgets/dialog.js';
+
+
+$('.tltp').tooltip();
+
+
+$(document).ready(function(){
+
+
+	$.ajaxSetup({
+    	headers : {
+        	'X-CSRF-TOKEN' : $('meta[name=csrf-token]').attr('content')
+    	}
+	});
+
+
+     $('#delete').click(function(event) {
+        event.preventDefault();
+        var forward_url = $(this).attr('href');
+
+        /** Create div element for delete confirmation dialog*/
+        var dynamicDialog = $('<div><span class="material-icons" >warning</span> This action will permanently delete this item.</div>');
+        
+        dynamicDialog.dialog({
+                title : "Are you sure?",
+                closeOnEscape: true,
+                modal : true,
+                dialogClass: "alert",
+               	buttons : 
+                        [{
+                            text : "Delete this Item",
+                            click : function() {
+                                $(this).dialog("close");
+	            				window.location.href = forward_url;
+                            }
+                        },
+                        {
+                            text : "Cancel",
+                            click : function() {
+                                    $(this).dialog("close");
+                            }
+                        }]
+        });
+        return false;
+    });
+
+
+    $( ".searchlist" ).on('focus', function(){
+      $(this).autocomplete({
+	      source:"/api/" + $(this).attr("id"),
+	      minLength: 2,
+	      focus: function( event, ui ) {
+	        $( this ).val( ui.item.name );
+	        return false;
+	      },
+	      select: function( event, ui ) {
+	        $( this ).val( ui.item.name );
+	        $( "#" + $(this).attr("id") + "id" ).val( ui.item.id );
+	        if($(this).attr("id") == "countries"){
+	           $( "#countryphonecode" ).val( ui.item.calling_code );
+	        }
+	        return false;
+      		}
+     	})
+    	.autocomplete( "instance" )._renderItem = function( ul, item ) {
+      		return $( "<li>" )
+        	.append( "<div>" + item.name + "</div>" )
+        	.appendTo( ul );
+    	};
+    });
+
+});

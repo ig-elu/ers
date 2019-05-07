@@ -17,12 +17,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'ERS') }}
                 </a>
@@ -69,17 +69,19 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
         </nav>
-
+        <div class="bg-dark">
+            @auth
+                @include('include.navbar')
+            @endauth
+        </div>
         <main class="py-4 cont">
             @yield('content')
         </main>
         <div class="footer-ers">
-            <div class="container">
-                <div>{{ now()->year }} International Group of Ex Libris Users</div>
                 <div></div>
-            </div>
+                <div class="copyright">{{ now()->year }} International Group of Ex Libris Users</div>
+                <div></div>
         </div>
 
     </div>

@@ -8,6 +8,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+//jQuery UI
+@import '~jquery-ui/themes/base/all.css';
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -26,4 +29,15 @@
 
 .cont{
 	min-height: 500px;
+}
+.list-group{
+  padding: 0px 20px 0px 20px;
+}
+.footer-ers{
+  padding: 20px;
+}
+.material-icons{
+    font-size: 16px;
+    padding-bottom:3px;
+    vertical-align: middle;
 }

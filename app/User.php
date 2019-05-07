@@ -2,13 +2,17 @@
 
 namespace App;
 
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Scout\Searchable;
+
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable, Searchable;
+    public $asYouType = true;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password',
+        'name', 'username', 'email', 'password', 'institutionid'
     ];
 
     /**
@@ -36,4 +40,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function toSearchableArray(){
+        //$array = $this->toArray();
+
+        return ['id' => $this->id, 'username' => $this->username,'name' => $this->name];
+
+        //return $array;
+    }
+    public function institution(){
+        return $this->hasOne('App\Institution', 'id', 'institutionid');
+    }
 }
