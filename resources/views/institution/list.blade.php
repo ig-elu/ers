@@ -6,7 +6,7 @@
         {!! Form::token() !!}
         @include('components.searchresults')
         @include('components.pagination')
-        <div class="col-7">
+        <div class="col-8">
           <ul class="list-group">
           @foreach ($list as $item)
             <li class="list-group-item">

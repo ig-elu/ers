@@ -105,5 +105,20 @@ $(document).ready(function(){
         	.appendTo( ul );
     	};
     });
+    $("#language_specific").click(function(){
+        var $chk = $(this).attr('checked');
+        if( !$chk ){
+            $(".conditional").each(function(){
+                $(this).removeClass('hidden');
+                $("#language_specific").attr("checked", "checked");
+            });
+        }else{
+            $(".conditional").each(function(){
+                $(this).addClass('hidden');
+                $("#language_specific").removeAttr("checked");
+            });
+        }
+
+    });
 
 });

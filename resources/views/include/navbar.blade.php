@@ -9,10 +9,10 @@
           <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
-          <!--<li class="nav-item">
-            <a class="nav-link" href="/request">Request</a>
+          <<li class="nav-item">
+            <a class="nav-link" href="/request">Requests</a>
           </li>
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link" href="/vote">Vote</a>
           </li>
           <li class="nav-item">

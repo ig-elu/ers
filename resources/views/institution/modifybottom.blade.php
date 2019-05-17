@@ -1,10 +1,8 @@
       {{-- Begin View Bottom --}}
-        <div class="mt-4 mb-4">
-          {!! Form::label('usergroup', 'UserGroups') !!}
-          <div class="card">
-            <div class="card-body">
+        <div class="card mb-3 border-ppd-grey">
+            <div class="card-header ppd-grey border-ppd-grey">User Groups</div>
+            <ul class="list-group list-group-flush">
               {!! Helper::getcheckboxlist('group', '\App\Group', 'sort', isset($item->usergroups) ? $item->usergroups : '', 'groupcode', 'code', null, null) !!}
-            </div>
-          </div>
+            </ul>
         </div>
       {{-- End View Bottom --}}

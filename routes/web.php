@@ -62,4 +62,13 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::post('/institution/{institutionid}/edit', 'InstitutionController@submit');
 	Route::post('/institution', 'InstitutionController@list');
 
+	Route::get('/request/add', 'RequestController@add');
+	Route::get('/request/{requestid}/edit', 'RequestController@edit');
+	Route::get('/request/{requestid}/delete', 'RequestController@delete');
+	Route::get('/request/{requestid}/view', 'RequestController@view');
+	Route::get('/request', 'RequestController@list');
+	Route::post('/request/add', 'RequestController@submit');
+	Route::post('/request/{requestid}/edit', 'RequestController@submit');
+	Route::post('/request', 'RequestController@list');
+
 });

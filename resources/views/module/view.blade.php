@@ -1,5 +1,5 @@
       {{-- Begin View Form --}}
-      <div class="col-8">
+      <div class="col-7">
         <div class="card">
           <div class="card-body border-bottom">
             <h5 class="card-title">{{ ( isset($item->name) ? $item->name : '' ) }} (for {{ ( isset($obj_a->name) ? $obj_a->name : '' ) }})</h5>
@@ -20,7 +20,7 @@
       </div>
       <div class="col-1">
       </div>  
-      <div class="col-3">
+      <div class="col-4">
         @include($mod . '.viewrighta')
       <div></div>
         @include($mod . '.viewrightb')

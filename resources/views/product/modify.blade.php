@@ -4,23 +4,32 @@
       <div class="row">
         <div class="col-7">
             {!! Form::token() !!}
-            <div class="form-group">
-              {!! Form::label('code', 'Product Code') !!}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Product Code</span>
+                </div>
               {!! Form::text('code', ( isset($item->code) ? $item->code : '' ), ['class'=>'form-control', 'placeholder' => 'Code'] ) !!}
             </div>
-            <div class="form-group">
-              {!! Form::label('name', 'Product Name') !!}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Product Name</span>
+                </div>
               {!! Form::text('name', ( isset($item->name) ? $item->name : '' ), ['class'=>'form-control', 'placeholder' => 'Name'] ) !!}
             </div>
-            <div class="form-group">
-              {!! Form::checkbox('special', 1, ( isset($item->special) ? (($item->special == 1) ? 'true' : '') : '' ) ) !!} Special (Hide from Listing)
+            <div class="custom-control custom-switch mb-3">
+              <input class="custom-control-input" type="checkbox" name="special" id="special" {{ ( isset($item->special) ? (($item->special == 1) ? ' checked' : '') : '') }} />
+              <label class="custom-control-label" for="special"> Special (Hide from Listing)</label>
             </div>
-            <div class="form-group">
-              {!! Form::label('description', 'Description') !!}
-              {!! Form::textarea('description', ( isset($item->description) ? $item->description : '' ), ['class'=>'form-control', 'rows' => '3'] ) !!}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Description</span>
+                </div>
+              {!! Form::textarea('description', ( isset($item->description) ? $item->description : '' ), ['class'=>'form-control', 'rows' => '2'] ) !!}
             </div>
-            <div class="form-group">
-              {!! Form::label('emailnotifications', 'Notification Email Addresses') !!}
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Email Notifications</span>
+                </div>
               {!! Form::text('emailnotifications', ( isset($item->emailnotifications) ? $item->emailnotifications : '' ), ['class'=>'form-control', 'placeholder' => 'emails separated by ,'] ) !!}
             </div>
             {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
